@@ -1,0 +1,43 @@
+REGISTRATION
+
+INSERT INTO attendees (first_name, last_name, email, phone_number, language, event_id) VALUES
+
+form, form, form, form, page rip, (register feature within each event page, value carried)
+
+closing page with links
+    accomodation and travel
+        both links pass on necessary locations
+    Print registration
+        DB rip page with special CSS
+    Print pass
+        DB rip with with special CSS
+    Info Pack
+        PHP with attendee ID
+        Event info text, (timetable?)
+        First Hotel, First Travel Pages
+
+EVENT PAGES
+
+Event Page Build:
+    basic details, season, region preprogrammed
+
+    event description saved separately as a txt
+        link in db
+    Further details drawn from db
+
+PREVIOUS EVENT PAGE
+
+    DB build
+    Search
+        location
+        type
+        date
+    View Page: PHP reads type
+        HTML Player for Audio
+        Youtube for Video
+        Table for competition results (possibly stored in separate DB, do later)
+
+FEEDBACK PAGE
+    email address
+    dynamic word count on textbox(Javascript)
+    On submission forward to thank you page

@@ -1,0 +1,31 @@
+INSERT INTO locations (region, addr_1, addr_2, town, county) VALUES
+("Leinster", "Green Road", "Yellow Street", "Carlow", "Carlow"),
+("Munster", "Red Road", "White Street", "Cork", "Cork"),
+("Ulster", "Blue Road", "White Street", "Galway", "Galway"),
+("Connaught", "Red Road", "Blue Street", "Donegal", "Donegal");
+
+INSERT INTO accomodation (name, location, stars, link, cost) VALUES
+("X Hotel", 2, 3, "placeholder.html", 375),
+("Y B&B", 3, 4, "placeholder2.html", 512),
+("Z Hostel", 4, 5, "placeholder3.html", 256);
+
+INSERT INTO attendee (first_name, last_name, email, phone_number, language, event_id) VALUES
+("John", "Doe", "fake@bored.ie", "123456789", "en_uk", 1),
+("Master", "Blaster", "mad@max.com", "987654321", "en_us", 1),
+("Chuck", "Jones", "looney@tooney.com", "456123789", "it", 2);
+
+INSERT INTO event_info (start_date, end_date, location) VALUES
+("2012-07-23", "2012-07-26", 2),
+("2012-04-20", "2012-04-23", 3),
+("2011-01-12", "2012-01-15", 4);
+
+INSERT INTO feedback VALUES
+("The website isn't done yet", "tak@bored.ie");
+
+INSERT INTO recordings (date, event_id, type, link) VALUES
+("2012-07-22", 1, "audio", "https://www.youtube.com/watch?v=X8YEOJkJIdU"),
+("2012-07-21", 1, "video", "https://www.youtube.com/watch?v=ndYcpuurNVY");
+
+INSERT INTO travel (travel_type, location, link, cost, contact) VALUES
+("taxi", 2, "placeholder4.html", 150, "travel@1.com"),
+("bus", 3, "placeholder5.html", 30, "bus@taxi.eu");
