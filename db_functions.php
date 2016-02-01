@@ -1,8 +1,8 @@
 <?php
     class MyDB extends SQLite3{
 
-        function __construct(){
-            $this -> open('2016.db');
+        function __construct($db_url){
+            $this -> open($db_url);
         }
 
         function execSQL($query){
@@ -23,7 +23,9 @@
         function displayFeedback(){
             $sql = 'SELECT * FROM feedback';
             $ret = execSQL($sql);
-            if(!$ret){}else{
+            if(!$ret){
+                return false;
+            }else{
             echo '<table>
                     <tr>
                         <th>Email Address</th>
@@ -93,9 +95,11 @@
 
         //Displays all previous events by date within a table (further sorting should be implented by javascript)
         function displayPreviousEvents(){
-            $sql = 'SELECT id, title, date, event_id, type FROM events ORDER BY date';
+            $sql = 'SELECT id, title, date, event_id, type FROM events';
             $ret = execSQL($sql);
-            if(!$ret){}else{
+            if(!$ret){
+                return false;
+            }else{
             echo '<table>
                     <tr>
                         <th>Title</th>
@@ -121,7 +125,9 @@
             $sql = "SELECT type, link FROM events WHERE if = " . $id . ";";
             $ret = execSQL($sql);
 
-            if(!$ret){}else{
+            if(!$ret){
+                return false;
+            }else{
                 $row = $ret.fetchArray(SQLite3_ASSOC){
                     switch($row['type']){
                         case "audio":
