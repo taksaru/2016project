@@ -13,6 +13,8 @@
             $db = new myDB('2016.db');
 
             $db->addFeedback($email, $feedback);
+
+            //Gobbledegook
         ?>
         <h1>Thank you for your Feedback</h1>
     </body>
