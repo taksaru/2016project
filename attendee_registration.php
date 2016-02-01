@@ -21,6 +21,8 @@
             $db->addAttendee($first_name, $last_name, $email, $phone, $language, $event);
 
             //need design of receipt before it can be implemented
+
+            
         ?>
     </body>
 </html>

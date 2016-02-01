@@ -10,8 +10,8 @@
                 var text_max = 250;
             $('#textarea_feedback').html(text_max + ' characters remaining');
 
-            $('#textarea').keyup(function() {
-                var text_length = $('#textarea').val().length;
+            $('#feedback').keyup(function() {
+                var text_length = $('#feedback').val().length;
                 var text_remaining = text_max - text_length;
 
             $('#textarea_feedback').html(text_remaining + ' characters remaining');
@@ -25,7 +25,7 @@
             <label for="email">Email Address:</label>
             <input id="email" type="text" placeholder="e-mail address">
 
-            <textarea id="textarea" rows="8" cols="30" maxlength="250"></textarea>
+            <textarea id="feedback" rows="8" cols="30" maxlength="250"></textarea>
 
             <div id="textarea_feedback"></div>
             <input type="submit" value="Submit">
