@@ -9,7 +9,7 @@
             <label for="first_name">First Name:</label>
             <input id="first_name" type="text" placeholder="First Name">
             <label for="last_name">Last Name:</label>
-            <input id="last_name" type="text" placeholder="First Name">
+            <input id="last_name" type="text" placeholder="Last Name">
             <label for="email">Email Address:</label>
             <input id="email" type="text" placeholder="e-mail address">
             <label for="phone"></label>
