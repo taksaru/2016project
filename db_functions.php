@@ -20,7 +20,7 @@
             execSQL($sql);
         }
 
-        function displayFeedback($db){
+        function displayFeedback(){
             $sql = 'SELECT * FROM feedback';
             $ret = execSQL($sql);
             if(!$ret){}else{
@@ -91,7 +91,7 @@
             }
         }
 
-        //Displays all previous events by date withi a table (further sorting should be implented by javascript)
+        //Displays all previous events by date within a table (further sorting should be implented by javascript)
         function displayPreviousEvents(){
             $sql = 'SELECT id, title, date, event_id, type FROM events ORDER BY date';
             $ret = execSQL($sql);
