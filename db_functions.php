@@ -143,6 +143,19 @@
                 }
             }
         }
+
+        function getAttendeeId($email, $event_id){
+            $sql = "SELECT id FROM attendees WHERE email='" . $email . "' AND event_id = '" . $event_id . ";";
+            $ret = execSQL($sql);
+
+            if(!$ret){
+                return false;
+            }else{
+                $row = $ret.fetchArray(SQLite3_ASSOC){
+                    return $row['id'];
+                }
+            }
+        }
     }
 
     $db = new MyDB();
