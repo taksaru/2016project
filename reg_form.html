@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <script src="dist/sweetalert.min.js"></script> <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
+
+
+        
+
+        <style>
+
+            body 
+            {
+                background-image: url("http://www.rgbstock.com/cache1s6IGR/users/x/xy/xymonau/300/nrmoMm4.jpg");
+                background-size:cover;
+            }
+
+            /* FORM STYLES */
+
+            form
+            {
+                font-family: Arial, Helvetica, sans-serif;
+                position: absolute;
+                
+                width: 440px;
+                height:400px;
+                
+                position: center;
+                
+   
+            }
+
+            .form-container 
+            {
+                border: 0px solid #dbe9ff;
+                background: #ccc7e8;
+                background: -webkit-gradient(linear, left top, left bottom, from(#444ac7), to(#ccc7e8));
+                background: -webkit-linear-gradient(top, #444ac7, #ccc7e8);
+                background: -moz-linear-gradient(top, #444ac7, #ccc7e8);
+                background: -ms-linear-gradient(top, #444ac7, #ccc7e8);
+                background: -o-linear-gradient(top, #444ac7, #ccc7e8);
+                background-image: -ms-linear-gradient(top, #444ac7 0%, #ccc7e8 100%);
+                -webkit-border-radius: 20px;
+                -moz-border-radius: 20px;
+                border-radius: 20px;
+                -webkit-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+                -moz-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+                box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+                text-decoration: none;
+                vertical-align: middle;
+                min-width:400px;
+                padding:20px;
+                width:500px;
+            }    
+            .form-field {
+                   border: 1px solid #c9b7a2;
+                   background: #ffffff;
+                   -webkit-border-radius: 15px;
+                   -moz-border-radius: 15px;
+                   border-radius: 15px;
+                   color: #bca2c7;
+                   -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+                   -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+                   box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+                   padding:8px;
+                   margin-bottom:20px;
+                   width:280px;
+               }
+            .form-field:focus {
+                   background: #fff;
+                   color: #725129;
+               }
+            
+            .form-title {
+               margin-bottom:10px;
+               text-shadow: grey 0 1px 0;
+               font-weight: bold;
+               font-size: large;
+                text-align: center;
+               }
+
+               /*form buttons*/
+            
+            .submit-button {
+               border: 1px solid #000000;
+               background: #187805;
+               background: -webkit-gradient(linear, left top, left bottom, from(#5abd82), to(#187805));
+               background: -webkit-linear-gradient(top, #5abd82, #187805);
+               background: -moz-linear-gradient(top, #5abd82, #187805);
+               background: -ms-linear-gradient(top, #5abd82, #187805);
+               background: -o-linear-gradient(top, #5abd82, #187805);
+               background-image: -ms-linear-gradient(top, #5abd82 0%, #187805 100%);
+               -webkit-border-radius: 4px;
+               -moz-border-radius: 4px;
+               border-radius: 4px;
+               -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+               -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+               box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+               text-shadow: #7ea854 0 1px 0;
+               color: #000000;
+               font-family: helvetica, serif;
+               padding: 8.5px 18px;
+               font-size: 14px;
+               text-decoration: none;
+               vertical-align: middle;
+               }
+
+               .submit-button:hover {
+               border: 1px solid #447314;
+               text-shadow: #31540c 0 1px 0;
+               background: #6aa436;
+               background: -webkit-gradient(linear, left top, left bottom, from(#8dc059), to(#6aa436));
+               background: -webkit-linear-gradient(top, #8dc059, #6aa436);
+               background: -moz-linear-gradient(top, #8dc059, #6aa436);
+               background: -ms-linear-gradient(top, #8dc059, #6aa436);
+               background: -o-linear-gradient(top, #8dc059, #6aa436);
+               background-image: -ms-linear-gradient(top, #8dc059 0%, #6aa436 100%);
+               color: #fff;
+               }
+            .submit-button:active {
+               text-shadow: #31540c 0 1px 0;
+               border: 1px solid #447314;
+               background: #8dc059;
+               background: -webkit-gradient(linear, left top, left bottom, from(#6aa436), to(#6aa436));
+               background: -webkit-linear-gradient(top, #6aa436, #8dc059);
+               background: -moz-linear-gradient(top, #6aa436, #8dc059);
+               background: -ms-linear-gradient(top, #6aa436, #8dc059);
+               background: -o-linear-gradient(top, #6aa436, #8dc059);
+               background-image: -ms-linear-gradient(top, #6aa436 0%, #8dc059 100%);
+               color: #fff;
+               }
+
+
+                .quit-button 
+                {
+                    border: 1px solid #000000;
+                    background: #ff0000;
+                    background: -webkit-gradient(linear, left top, left bottom, from(#8a0000), to(#ff0000));
+                    background: -webkit-linear-gradient(top, #8a0000, #ff0000);
+                   background: -moz-linear-gradient(top, #8a0000, #ff0000);
+                   background: -ms-linear-gradient(top, #8a0000, #ff0000);
+                   background: -o-linear-gradient(top, #8a0000, #ff0000);
+                   background-image: -ms-linear-gradient(top, #8a0000 0%, #ff0000 100%);
+                   -webkit-border-radius: 4px;
+                   -moz-border-radius: 4px;
+                   border-radius: 4px;
+                   -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+                   -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+                   box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+                   text-shadow: #7ea854 0 1px 0;
+                   color: #000000;
+                   font-family: helvetica, serif;
+                   padding: 8.5px 18px;
+                   font-size: 14px;
+                   text-decoration: none;
+                   vertical-align: middle;
+               }
+
+               .quit-button:hover
+               {
+                    border: 1px solid #447314;
+                    text-shadow: #520c0c 0 1px 0;
+                    background: #ff9900;
+                    background: -webkit-gradient(linear, left top, left bottom, from(#e8b600), to(#ff9900));
+                    background: -webkit-linear-gradient(top, #e8b600, #ff9900);
+                    background: -moz-linear-gradient(top, #e8b600, #ff9900);
+                    background: -ms-linear-gradient(top, #e8b600, #ff9900);
+                    background: -o-linear-gradient(top, #e8b600, #ff9900);
+                    background-image: -ms-linear-gradient(top, #e8b600 0%, #ff9900 100%);
+                    color: #fff;
+               }
+
+               .quit-button:active
+               {
+                    text-shadow: #31540c 0 1px 0;
+                   border: 1px solid #447314;
+                   background: #db8b14;
+                   background: -webkit-gradient(linear, left top, left bottom, from(#eb6d0c), to(#ff9900));
+                   background: -webkit-linear-gradient(top, #eb6d0c, #db8b14);
+                   background: -moz-linear-gradient(top, #eb6d0c, #db8b14);
+                   background: -ms-linear-gradient(top, #eb6d0c, #db8b14);
+                   background: -o-linear-gradient(top, #eb6d0c, #db8b14);
+                   background-image: -ms-linear-gradient(top, #eb6d0c 0%, #db8b14 100%);
+                   color: #fff;
+
+               }
+
+               /*LANGAGUE PICKER*/
+               .languagePick {
+                    padding: 0;
+                    margin: 0;
+                    border: 1px solid #ccc;
+                    width: 120px;
+                    border-radius: 3px;
+                    overflow: hidden;
+                    background-color: #fff;
+
+                    background: #fff url("http://www.scottgood.com/jsg/blog.nsf/images/arrowdown.gif") no-repeat 90% 50%;
+                }
+
+                .languagePick select {
+                    padding: 5px 8px;
+                    width: 130%;
+                    border: none;
+                    box-shadow: none;
+                    background-color: transparent;
+                    background-image: none;
+                    -webkit-appearance: none;
+                       -moz-appearance: none;
+                            appearance: none;
+                }
+
+                .languagePick select:focus {
+                    outline: none;
+                }
+
+            
+
+
+                /* POSISTION */
+
+                .form_posistion
+                {
+                      position: absolute;
+                        left: 500px;
+                        top: 100px;
+                }
+
+                .dropdownPos
+                {
+                    position: absolute;
+                        left: 100px;
+                        top: 290px;
+                }
+
+                .buttonPos
+                {
+                    position: absolute;
+                        left: 600px;
+                        top: 450px;
+                }
+                .logo
+                {
+                    position: absolute;
+                        left: 30px;
+                        top: 30px;
+                }
+
+
+
+        </style>
+
+    </head>
+    <body>
+
+        <div class="form_posistion">
+        <form action="attendee_registration.php" method="post" class="form-container">
+
+        
+            <p class="form-title">Pleese fill out the Following Details to Register</p><br>
+
+
+           <!---text boxes---->
+
+            <label for="first_name">First Name:</label>
+            <input class="form-field" id="first_name" type="text" required placeholder="First Name"><br>
+
+            <label for="last_name">Last Name:</label>
+            <input class="form-field" id="last_name" type="text" required placeholder="First Name"
+             minlength="2"><br>
+
+            <label for="email">Email Address:</label>
+            <input class="form-field" id="email" type="email" required placeholder="e-mail address"><br>
+
+            <label for="phone">Phone Number</label>
+            <input class="form-field" id="phone" type="text" required placeholder="Phone Number"  maxlength="10" minlength="10"><br>
+
+             <!---langague sellect  -->
+
+
+            Langauge<section class="container">
+                <div class="dropdownPos">
+                    <div class="languagePick">
+                <select name="Language"  class="dropdown-select" id = "langage">
+                    <option value="eng" style="background-image:url(img_icons/flags/gb.png);">English</option>
+                    <option value="frn">French</option>
+                    <option value="ger">German</option>
+                    <option value="itl">Itialien</option>
+                </select></div>
+            </section></div>
+
+             <!---confirm button---->
+
+            <div class="buttonPos">
+            <input name="submit" type="submit" value="Register" class="submit-button">
+
+            <!---quit button---->
+
+            <a href="http://www.google.com/" class="quit-button" onclick="return confirm('Do you really want to Quit Registrating and return to the Home Screen?');">Quit Registrating</a>
+
+            </div>
+
+
+
+            <div class="logo"><img src="img/glider.png" alt="Mountain View" style="width:250px;height:100px;"></div>
+
+            
+             <!---glider code --->
+
+            <!--PHP SCRIPT-->
+            <div id="invisible values">
+            <?php
+                //connect to database
+
+                //$db = new myDB('2016.db');
+
+                //event id won't be known by the user - it be passed over
+                $event_id = 222;
+                $language = $_GET['language'];
+
+                $firstName = $_GET['first_name'];
+                $lastName = $_GET['last_name'];
+                $email = $_GET['email'];
+                $phoneNum = $_GET['phone'];
+
+                echo $firstName;
+                echo $lastName;
+                echo $email;
+                echo $phoneNum;
+                echo $language;
+                echo $event_id;
+
+                //add to the db
+
+                //addAttendee($firstName, $lastName, $phoneNum,  $language, $event_id);
+
+            ?>
+            </div>
+            </form>  </div>
+    </body>
+</html>
