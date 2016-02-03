@@ -5,6 +5,7 @@
     </head>
     <body>
         <!--post is used so that the registration query is only performed once -->
+        <!--attendee_registration.php method="post" VIP -->
         <form action="attendee_registration.php" method="post">
             <label for="first_name">First Name:</label>
             <input id="first_name" type="text" placeholder="First Name">
