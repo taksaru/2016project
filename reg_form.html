@@ -263,17 +263,18 @@
            <!---text boxes---->
 
             <label for="first_name">First Name:</label>
-            <input class="form-field" id="first_name" type="text" required placeholder="First Name"><br>
+            <input class="form-field" id="first_name" name="first_name" type="text" required placeholder="First Name"><br>
 
             <label for="last_name">Last Name:</label>
-            <input class="form-field" id="last_name" type="text" required placeholder="First Name"
+            <input class="form-field" id="last_name" name="last_name" type="text" required placeholder="First Name"
              minlength="2"><br>
 
             <label for="email">Email Address:</label>
-            <input class="form-field" id="email" type="email" required placeholder="e-mail address"><br>
+            <input class="form-field" id="email" name="email" type="email" required placeholder="e-mail address"><br>
 
             <label for="phone">Phone Number</label>
-            <input class="form-field" id="phone" type="text" required placeholder="Phone Number"  maxlength="10" minlength="10"><br>
+            <input class="form-field" id="phone" name="phone" type="text" required placeholder="Phone Number"  maxlength="10" minlength="10"><br>
+
 
              <!---langague sellect  -->
 
@@ -281,7 +282,7 @@
             Langauge<section class="container">
                 <div class="dropdownPos">
                     <div class="languagePick">
-                <select name="Language"  class="dropdown-select" id = "langage">
+                <select name="language"  class="dropdown-select" id = "langage">
                     <option value="eng" style="background-image:url(img_icons/flags/gb.png);">English</option>
                     <option value="frn">French</option>
                     <option value="ger">German</option>
@@ -289,6 +290,12 @@
                 </select></div>
             </section></div>
 
+      
+      <!---PLACEHOLDER HIDDEN EVENT ID--->
+      <input style="display: none;" type="radio" name="event" value="11111" checked><br>
+            
+      
+      
              <!---confirm button---->
 
             <div class="buttonPos">
@@ -310,29 +317,9 @@
             <!--PHP SCRIPT-->
             <div id="invisible values">
             <?php
-                //connect to database
-
-                //$db = new myDB('2016.db');
-
                 //event id won't be known by the user - it be passed over
-                $event_id = 222;
-                $language = $_GET['language'];
-
-                $firstName = $_GET['first_name'];
-                $lastName = $_GET['last_name'];
-                $email = $_GET['email'];
-                $phoneNum = $_GET['phone'];
-
-                echo $firstName;
-                echo $lastName;
-                echo $email;
-                echo $phoneNum;
-                echo $language;
-                echo $event_id;
-
-                //add to the db
-
-                //addAttendee($firstName, $lastName, $phoneNum,  $language, $event_id);
+                $event_id = $_POST['event_id'];
+                $language = $_POST['language'];
 
             ?>
             </div>
