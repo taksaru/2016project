@@ -156,6 +156,24 @@
                 }
             }
         }
+
+        function printReceipt($attendee_id){
+            $sql = "SELECT * FROM attendees WHERE id = " . $attendee_id . ";";
+            $ret = execSQL($sql);
+
+            if(!$ret){
+                return false;
+            }else{
+                $row = $ret.fetchArray(SQLite3_ASSOC){
+                    echo '<p>Your ID Number is: ' . $row['id'] . '.</p>';
+                    echo '<p>Thank You ' . $row['first_name'] . ' ' . $row['last_name'] . ' for registering for the ' . getEventTitle($row['event_id']) . '.</p>';
+                    echo '<p>Your event ID number is displayed above. Please use this number and email as proof of registration.</p>';
+                    echo '<p>See you at ' . $getEventTitle($row['event_id']) '.</p>';
+                    echo '<p><a href="tbd">What\'s the best way of getting there?</a></p>';
+                    echo '<p><a href="tbd">Where can I stay?</a></p>'
+                }
+            }
+        }
     }
 
     $db = new MyDB();
