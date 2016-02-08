@@ -1,8 +1,169 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
+
+        <!--NAVIGATION BAR SCRIPTS
+        ================================================== -->
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+
+        <link href="css/searchBar.css" rel="stylesheet" type="text/css" media="all"/>
+
+        <!-- Custom Theme files -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }>
+        </script>
+            
+
+        <!--style
+        ================================================== -->
+
+        <style>
+
+        /*background img
+        ================================================== */
+
+        body 
+         {
+            background-image: url("img/background.png");
+           background-size:cover;
+        }
+
+         /*icons
+        ================================================== */
+
+
+        textarea 
+        {
+            resize: none;
+            background: #FBFBEF;
+        }
+
+        input
+        {
+             width: 10em;  height: 2em;
+        }
+
+        .infoBox {
+               border: 0px solid #f2e3d2;
+               background: #ffff87;
+               background: -webkit-gradient(linear, left top, left bottom, from(#f9fad5), to(#ffff87));
+               background: -webkit-linear-gradient(top, #f9fad5, #ffff87);
+               background: -moz-linear-gradient(top, #f9fad5, #ffff87);
+               background: -ms-linear-gradient(top, #f9fad5, #ffff87);
+               background: -o-linear-gradient(top, #f9fad5, #ffff87);
+               background-image: -ms-linear-gradient(top, #f9fad5 0%, #ffff87 100%);
+               -webkit-border-radius: 8px;
+               -moz-border-radius: 8px;
+               border-radius: 8px;
+               -webkit-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+               -moz-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+               box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+               font-family: 'Helvetica Neue',Helvetica,sans-serif;
+               text-decoration: none;
+               vertical-align: middle;
+               min-width:300px;
+               padding:20px;
+               width:300px;
+
+               position: absolute;
+               top: 200px;
+               left: 700px;
+            }
+
+
+        /* posistioning 
+        ================================================== */
+
+        .commentBox
+        {
+            position: absolute;
+            top: 250px;
+            left: 300px;
+        }
+
+        .emailBox
+        {
+            position: absolute;
+            top: 430px;
+            left: 300px;
+        }
+        .prompt
+        {
+            position: absolute;
+            top: 200px;
+            left: 300px;
+            font-weight: bold;
+        }
+
+        .submitBtn
+        {
+            position: absolute;
+            top: 430px;
+            left: 550px;
+        }
+
+
+        </style>
+                
     </head>
+
+    <!--NAVIGATION BAR
+        ================================================== -->
+
+        <div class="header">
+    <div class="container">
+        <div class="header-main">
+            <div class="logo">
+                <a href="hompage.html"> <img src="img/glider.png" alt="" title=""> </a>
+            </div>
+            <div class="head-right">
+              <div class="top-nav">
+                    <span class="menu"> <img src="img/glider.png" alt=""/></span>
+                <ul class="res">
+                    <li><a href="hompage.html">Home</a></li>
+                    <li><a href="reg_form.html">Travel</a></li>
+                    <li><a href="blog.html">Accomdation</a></li>
+                    <li><a href="contact.html">Gallery</a></li>
+                    <li><a class="active" href="feedback.html">Feedback</a></li>
+                <div class="clearfix"> </div>
+                </ul>
+                <!-- script-for-menu -->
+                             <script>
+                               $( "span.menu" ).click(function() {
+                                 $( "ul.res" ).slideToggle( 300, function() {
+                                 // Animation complete.
+                                  });
+                                 });
+                            </script>
+            <!-- /script-for-menu -->
+             </div>
+            
+            <div class="social">
+                <ul >
+                    <li><a class="fa" href="#"> </a></li>
+                    <li><a class="tw" href="#"> </a></li>
+                    <li><a class="p" href="#"> </a></li>
+                </ul>
+                </div>
+                
+            
+            <div class="clearfix"> </div>
+               <!-- search-scripts -->
+                    <script src="js/classie.js"></script>
+                    <script src="js/uisearch.js"></script>
+                        <script>
+                            new UISearch( document.getElementById( 'sb-search' ) );
+                        </script>
+              <!-- //search-scripts -->
+        </div>
+
+     <!--FEEDBACK BOXES
+        ================================================== -->
+
+     <!--SCRIPT FOR WORD COUNT
+        ================================================== -->
+
     <body>
         <script type="text/javascript" src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js'></script>
         <script type="text/javascript">
@@ -10,25 +171,42 @@
                 var text_max = 250;
             $('#textarea_feedback').html(text_max + ' characters remaining');
 
-            $('#feedback').keyup(function() {
-                var text_length = $('#feedback').val().length;
+            $('#textarea').keyup(function() {
+                var text_length = $('#textarea').val().length;
                 var text_remaining = text_max - text_length;
 
             $('#textarea_feedback').html(text_remaining + ' characters remaining');
                 });
             });
+
         </script>
+
+        <!--COMMENT FORM
+        ================================================== -->
+
         <noscript>
             <p>No Javascript</p>
         </noscript>
         <form action="thankyou.php" method="post">
+            <div class="emailBox">
             <label for="email">Email Address:</label>
-            <input id="email" type="text" placeholder="e-mail address">
+            <input class="form-field" id="email" name="email" type="email" required placeholder="e-mail address">
+        </div>
 
-            <textarea id="feedback" rows="8" cols="30" maxlength="250"></textarea>
+            <div class="commentBox">
+            <textarea id="textarea" rows="8" cols="50" maxlength="250" placeholder="Feedback..." required></textarea></div>
 
-            <div id="textarea_feedback"></div>
-            <input type="submit" value="Submit">
+            <div class="prompt"><p>Give us some Feedback on an event <br><div id="textarea_feedback"></div></p></div>
+            <div class="btn"><input class="submitBtn" type="submit" value="Submit"></div>
         </form>
+        <div class="infoBox">
+            <p>
+                Do you need to get in touch with us for any reason? Whether you have any questions, feedback or complaints on a event you went to, having trouble working the website or registration.
+                All you have to do is write us a note and provide us with your email and we’ll get back to you. If its about an event, please enter the title and the date the event was held. Your Registration ID and personal information is optional except for the email.
+                Thank you.
+            </p>
+
+        </div>
+
     </body>
 </html>

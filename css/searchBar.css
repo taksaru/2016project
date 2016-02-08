@@ -1,0 +1,87 @@
+h4, h5, h6,
+h1, h2, h3 {margin-top: 0;}
+ul, ol {margin: 0;}
+p {margin: 0;}
+
+a:hover {
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+}
+/*--header start here--*/
+.header {
+  background: #3396FF;
+  border-bottom: 1px solid #0ab2d2;
+  height: 140px;
+}
+.logo {
+  float: left;
+  width:50%;
+  margin: 1em 0em 0em 0em;
+}
+.head-right {
+  float: right;
+  width: 50%;
+}
+.top-nav {
+  float: left;
+}
+.top-nav ul {
+	padding:0px;
+  list-style: none;
+}
+.top-nav ul li {
+  display: inline-block;
+  float: left;
+}
+.top-nav ul li a {
+  font-size: 1.3em;
+  font-weight: 400;
+  color: #fff;
+  text-decoration: none;
+  padding: 2em 1em 2em 1em;
+  font-family: 'Lora', serif;
+  display:block;
+}
+.top-nav ul li a:hover,.top-nav ul li a.active{
+	background:#1B196E;
+}
+span.menu{
+	display:none;
+}
+.social {
+  float: left;
+}
+.social ul {
+  margin: 2.3em 0em 0em 0em;
+  list-style: none;
+}
+.social ul li {
+  display: inline-block;
+  margin: 0px 10px 0px 0px;
+}
+.social ul li a {
+  background: url(../images/social-sprit.png)no-repeat;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+.social ul li a.fa {
+  background-position: 0px 0px;
+}
+.social ul li a.tw {
+  background-position: -18px 0px;
+}
+.social ul li a.p {
+  background-position: -39px 0px;
+}
+.social ul li a.fa:hover {
+  background-position: 5px -25px;
+}
+.social ul li a.tw:hover {
+  background-position: -18px -25px;
+}
+.social ul li a.p:hover {
+  background-position: -39px -25px;
+}
