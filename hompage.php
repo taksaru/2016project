@@ -44,105 +44,28 @@ GLIDERS HOME PAGE
 
 <link href="css/searchBar.css" rel="stylesheet" type="text/css" media="all"/>
 
+<link href="css/styles.css" rel="stylesheet" type="text/css" media="all"/>
+
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }>
 </script>
-	
 
-<!--style
-================================================== -->
-
-<style>
-
-/*background img
-================================================== */
-
-body 
- {
-    background-image: url("img/background.png");
-   background-size:cover;
-}
-
-/*search 
-================================================== */
-
-section
-{
-	position: absolute;
-	top:50px;
-	left: 250px;
-
-}
-.input
-{
-	color: black;
-
-}
-
-/*event icon
-================================================== */
-
-.event_container {
-   border: 5px solid #000000;
-   background: #ffffff;
-   background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff));
-   background: -webkit-linear-gradient(top, #ffffff, #ffffff);
-   background: -moz-linear-gradient(top, #ffffff, #ffffff);
-   background: -ms-linear-gradient(top, #ffffff, #ffffff);
-   background: -o-linear-gradient(top, #ffffff, #ffffff);
-   background-image: -ms-linear-gradient(top, #ffffff 0%, #ffffff 100%);
-   -webkit-border-radius: 0px;
-   -moz-border-radius: 0px;
-   border-radius: 0px;
-   -webkit-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
-   -moz-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
-   box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
-   font-family: 'Helvetica Neue',Helvetica,sans-serif;
-   text-decoration: none;
-   vertical-align: middle;
-
-   min-width:300px;
-   padding:20px;
-   width:600px;
-   }
-
-   .event_container 
-   {
-   	 position: absolute;
-   	 left: 320px;
-   }
-
-   th, td 
-   {
-    padding: 10px;
-    text-align: left;
-	}
-
-/*posistion 
-================================================== */
-
-.search-icon
-{
-	position: absolute;
-	top:168px;
-	left: 290px;
-}
-
-
-</style>
+<!--CALLENDER  ADD SCRIPT
+		================================================== -->
+		<link rel='stylesheet' type='text/css' href='fullcalendar/fullcalendar.css' />
+<script type='text/javascript' src='fullcalendar/jquery-1.5.2.min.js'></script>
+<script type='text/javascript' src='fullcalendar/jquery-ui-1.8.11.custom.min.js'></script>
+<script type='text/javascript' src='fullcalendar/fullcalendar.min.js'></script>
+<script type='text/javascript' src='js/CallenderAd.js'></script>
 
 
 </head>
-
-
-	
-		
 		<!--NAVIGATION BAR
 		================================================== -->
 
-		<div class="header">
+	<div class="header">
 	<div class="container">
 		<div class="header-main">
 			<div class="logo">
@@ -152,11 +75,10 @@ section
 			  <div class="top-nav">
 					<span class="menu"> <img src="img/glider.png" alt=""/></span>
 				<ul class="res">
-					<li><a class="active" href="hompage.html">Home</a></li>
-					<li><a href="reg_form.html">Travel</a></li>
-					<li><a href="blog.html">Accomdation</a></li>
-					<li><a href="contact.html">Gallery</a></li>
-					<li><a href="feedback.html">Feedback</a></li>
+					<?php 
+						include "generatenav.php";
+						generateNav('home');
+					?>
 				<div class="clearfix"> </div>
 				</ul>
 				<!-- script-for-menu -->
@@ -188,11 +110,16 @@ section
 						</script>
 			  <!-- //search-scripts -->
 		</div>
+		</div>
+	</div>
+	</div>
 		<!--SEARCH BOX
 		================================================== -->
-		<section id="content">
+	<div id = "searchBox">
+		
 			<div class="two-third">
 				<div id="searchmodule" class="tabs">
+					<img src="img/icons/search.png" style="width:70px;height:70px;" class="search-icon">
 					<ul class="tab-control">
 						<li><a href="#flight-search">National Events</a></li>
 						<li><a href="#hotel-search">International Events</a></li>
@@ -301,10 +228,9 @@ section
 			
 			
 			<br class="clear" />
-		</section>
-		<!--end content -->
-	
+		
 	</div>
+		<!--end content -->
 
 	<div class="event_container">
 
@@ -343,16 +269,28 @@ section
 		</table>
 
 	</div>
-	
-	<!-- images
 
+	<!-- CALLENDER AD
 		================================================== -->
 
-		<img src="img/icons/search.png" style="width:70px;height:70px;" class="search-icon">
+	<div id ='calenderAd'>
+	<h4> what is coming up?</h4>
+		<div id='calendar'></div>
+	</div>
 
+	<!-- SLIDE SHOW - SHOWS WHAT THE WEBSITE IS ALL ABOUT
+	======================================================-->
 
+	 
+	<div id="comslider_in_point_911021"></div>
 
-
+	<script type="text/javascript">
+	var oCOMScript911021=document.createElement('script');
+	oCOMScript911021.src="comslider911021/comsliderd.js?timestamp=1455219745";
+	oCOMScript911021.type='text/javascript';
+	document.getElementsByTagName("head").item(0).appendChild(oCOMScript911021);
+	</script>
+		
 
 	
 	

@@ -1,3 +1,14 @@
+<!--
+================================================== 
+PHILIP SPILLANE
+115140149
+CS3305
+TEAM GLIDER WEBSITE 
+GLIDERS HOME PAGE
+================================================== 
+-->
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -257,16 +268,16 @@
         <form action="attendee_registration.php" method="post" class="form-container">
 
         
-            <p class="form-title">Pleese fill out the Following Details to Register</p><br>
+            <p class="form-title">Please fill out the Following Details to Register</p><br>
 
 
-           <!---text boxes---->
+           <!---text boxes-->
 
             <label for="first_name">First Name:</label>
             <input class="form-field" id="first_name" name="first_name" type="text" required placeholder="First Name"><br>
 
             <label for="last_name">Last Name:</label>
-            <input class="form-field" id="last_name" name="last_name" type="text" required placeholder="First Name"
+            <input class="form-field" id="last_name" name="last_name" type="text" required placeholder="Last Name"
              minlength="2"><br>
 
             <label for="email">Email Address:</label>
@@ -279,7 +290,7 @@
              <!---langague sellect  -->
 
 
-            Langauge<section class="container">
+            Langauge<section class="container" id="language">
                 <div class="dropdownPos">
                     <div class="languagePick">
                 <select name="language"  class="dropdown-select" id = "langage">
@@ -289,39 +300,20 @@
                     <option value="itl">Itialien</option>
                 </select></div>
             </section></div>
-
       
-      <!---PLACEHOLDER HIDDEN EVENT ID->
-      <input style="display: none;" type="radio" name="event" value="11111" checked><br>
-            
-      
-      
-             <!-confirm button-->
+             <!--confirm button-->
 
             <div class="buttonPos">
             <input name="submit" type="submit" value="Register" class="submit-button">
 
             <!---quit button-->
 
-            <a href="hompage.html" class="quit-button" onclick="return confirm('Do you really want to Quit Registrating and return to the Home Screen?');">Quit Registrating</a>
+            <a href="hompage.php" class="quit-button" onclick="return confirm('Do you really want to Quit Registrating and return to the Home Screen?');">Quit Registrating</a>
 
             </div>
 
-
-
             <div class="logo"><img src="img/glider.png" alt="Mountain View" style="width:250px;height:100px;"></div>
 
-            
-             <!---glider code ->
-
-            <!PHP SCRIPT-->
-            <div id="invisible values">
-            <?php
-                //event id won't be known by the user - it be passed over
-                $event_id = $_POST['event_id'];
-                $language = $_POST['language'];
-
-            ?>
             </div>
             </form>  </div>
     </body>
