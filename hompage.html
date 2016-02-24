@@ -49,12 +49,91 @@ GLIDERS HOME PAGE
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }>
 </script>
+
+<!--CALLENDER  ADD SCRIPT
+		================================================== -->
+		<link rel='stylesheet' type='text/css' href='fullcalendar/fullcalendar.css' />
+<script type='text/javascript' src='fullcalendar/jquery-1.5.2.min.js'></script>
+<script type='text/javascript' src='fullcalendar/jquery-ui-1.8.11.custom.min.js'></script>
+<script type='text/javascript' src='fullcalendar/fullcalendar.min.js'></script>
+<script type='text/javascript'>
+
+	$(document).ready(function() {
+	
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+		
+		var calendar = $('#calendar').fullCalendar({
+			header: {
+				
+
+				left: 'prev,next today',
+				left: 'title'
+
+			},
+			
+			
+			events: 
+			[
+				/*
+					- EACH EVENT HAS
+						ID
+						TITLE
+						optional - START
+						optional - END
+						URL LINK TO THE INFO
+				*/
+
+				{
+					id: 999,
+					title: 'Munster - Culture Fest',
+					start: new Date(2016, 1, 2),
+					url: 'http://google.com/'
+
+				},
+				{
+					id: 999,
+					title: 'Ulster - Epic Rock Concert',
+					start: new Date(2016, 1, 22),
+					end: new Date(2016, 1, 24),
+					url: 'http://google.com/'
+				},
+				{
+					id: 999,
+					title: 'Ulster - Dog Competition',
+					start: new Date(2016, 1, 10),
+					end: new Date(2016, 1, 13),
+					url: 'http://google.com/'
+				},
+				
+				{
+					id: 999,
+					title: 'Munster - Environmental Awarness *',
+					start: new Date(2016, 1, 28),
+					end: new Date(2016, 1, 29),
+					url: 'http://google.com/'
+				},
+				{
+					id: 999,
+					title: 'Connuct - Litary Festival',
+					start: new Date(2016, 2, 2),
+					url: 'http://google.com/'
+				}
+
+			]
+		});
+		
+	});
+
+</script>
 	
 
 <!--style
 ================================================== -->
-
-<style>
+ 
+<style type='text/css'>
 
 /*background img
 ================================================== */
@@ -71,8 +150,11 @@ body
 section
 {
 	position: absolute;
-	top:50px;
-	left: 250px;
+	top:440px;
+	width: 620px;
+	margin-left: auto;
+	margin-right: auto;
+	
 
 }
 .input
@@ -110,8 +192,11 @@ section
 
    .event_container 
    {
-   	 position: absolute;
-   	 left: 320px;
+   	position: absolute;
+   	 margin-left: auto;
+	 margin-right: auto;
+	 top:800px;
+	 left:310px;
    }
 
    th, td 
@@ -119,6 +204,36 @@ section
     padding: 10px;
     text-align: left;
 	}
+	/*callender ad
+================================================== */
+
+	#calendar {
+		width: 360px;
+		margin: 0 auto;
+		font-size: 10px;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+
+
+		
+		}
+	#calenderAd
+	{
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		background: rgb(300, 300, 300);
+		
+		width: 400px;
+		font-size: 100px;
+
+		position: absolute;
+   	 margin-left: auto;
+	 margin-right: auto;
+	 top:180px;
+	 left:210px;
+	 padding: 10px;
+
+
+	}
+
 
 /*posistion 
 ================================================== */
@@ -126,8 +241,16 @@ section
 .search-icon
 {
 	position: absolute;
-	top:168px;
-	left: 290px;
+	top: -30px;
+    left: -35px;
+    z-index: 99;
+}
+
+#comslider_in_point_911021
+{
+	position: absolute;
+	top: 230px;
+	left: 600px;
 }
 
 
@@ -193,6 +316,7 @@ section
 		<section id="content">
 			<div class="two-third">
 				<div id="searchmodule" class="tabs">
+					<img src="img/icons/search.png" style="width:70px;height:70px;" class="search-icon">
 					<ul class="tab-control">
 						<li><a href="#flight-search">National Events</a></li>
 						<li><a href="#hotel-search">International Events</a></li>
@@ -343,16 +467,28 @@ section
 		</table>
 
 	</div>
-	
-	<!-- images
 
+	<!-- CALLENDER AD
 		================================================== -->
 
-		<img src="img/icons/search.png" style="width:70px;height:70px;" class="search-icon">
+	<div id ='calenderAd'>
+	<h4> what is coming up?</h4>
+		<div id='calendar'></div>
+	</div>
 
+	<!--
+	======================================================-->
 
+	 
+<div id="comslider_in_point_911021"></div>
 
-
+<script type="text/javascript">
+var oCOMScript911021=document.createElement('script');
+oCOMScript911021.src="comslider911021/comsliderd.js?timestamp=1455219745";
+oCOMScript911021.type='text/javascript';
+document.getElementsByTagName("head").item(0).appendChild(oCOMScript911021);
+</script>
+	
 
 	
 	
