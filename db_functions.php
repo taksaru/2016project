@@ -99,6 +99,95 @@
             }
         }
 
+        function printReceipt($attendee_id){
+            $sql = "SELECT * FROM attendees WHERE id = " . $attendee_id . ";";
+            $ret = execSQL($sql);
+
+            if(!$ret){
+                return false;
+            }else{
+                $row = $ret.fetchArray(SQLite3_ASSOC);
+                echo '<p>Your ID Number is: ' . $row['id'] . '.</p>';
+                echo '<p>Thank You ' . $row['first_name'] . ' ' . $row['last_name'] . ' for registering for the ' . getEventTitle($row['event_id']) . '.</p>';
+                echo '<p>Your event ID number is displayed above. Please use this number and email as proof of registration.</p>';
+                echo '<p>See you at ' . getEventTitle($row['event_id']) . '.</p>';
+                echo '<p><a href="tbd">What\'s the best way of getting there?</a></p>';
+                echo '<p><a href="tbd">Where can I stay?</a></p>';
+                
+            }
+        }
+
+        function displayEventSearchResults($results){
+            echo '<table>
+                <tr>
+                    <th>Title</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Link</th>';
+            while($row = $results->fetchArray(SQLite3_ASSOC)){
+                echo '<tr>
+                        <td>' . $row['title'] . '</td>
+                        <td>' . dateToString($row['start_date']) . '</td>
+                        <td>' . dateToString($row['end_date']) . '</td>
+                        <td><a href="display_event?event_id=' . $row['id'] .'">Click Here</a></td>
+                    </tr>';
+            }
+            echo '</table>'
+        }
+
+        //Outputs Date in DD/MM/YYYY format
+        function dateToString($date_id){
+            $sql = "SELECT day, month, year FROM dates WHERE id = " . $date_id . ";";
+            $ret = execSQL($sql);
+            $out = $ret['day'] . '/' . $ret['month'] . '/' . $ret['year'];
+            return $out;
+        }
+
+        function searchEvents($title){
+            $sql = "SELECT title, start_date, end_date, id FROM events WHERE title LIKE '%" . $title . "%';";
+            $ret = execSQL($sql);
+            if(!$ret){
+                return false;
+            }else{
+                return $ret;
+            }
+        }
+
+        function searchEvents($start_year, $start_month, $start_day, $end_year, $end_month, $end_day){
+            $sql = "SELECT title, start_date, end_date, id FROM events WHERE start_date IN (
+                SELECT id FROM dates 
+                WHERE year < " . $start_year . 
+                " AND month < " . $start_month . 
+                " AND day < " . $start_day . ") AND end_date IN ( 
+                SELECT id FROM dates 
+                WHERE year < " . $start_year . 
+                " AND month < " . $start_month . 
+                " AND day < " . $start_day . ");";
+            $ret = execSQL($sql);
+            if(!$ret){
+                return false;
+            }else{
+                return $ret;
+            }
+        }
+
+        function searchEvents($title, $start_year, $start_month, $start_day, $end_year, $end_month, $end_day){
+            $sql = "SELECT title, start_date, end_date, id FROM events WHERE start_date IN (
+                SELECT id FROM dates 
+                WHERE year < " . $start_year . 
+                " AND month < " . $start_month . 
+                " AND day < " . $start_day . ") AND end_date IN ( 
+                SELECT id FROM dates 
+                WHERE year < " . $start_year . 
+                " AND month < " . $start_month . 
+                " AND day < " . $start_day . ") AND tile LIKE '%" . $title "%';";
+            $ret = execSQL($sql);
+            if(!$ret){
+                return false;
+            }else{
+                return $ret;
+            }
+        }
 
         function getEventTitle($event_id){
             $sql = "SELECT title FROM events WHERE id = " . $event_id . ";";
