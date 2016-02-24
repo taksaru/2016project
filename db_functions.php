@@ -5,14 +5,32 @@
             $this -> open($db_url);
         }
 
-        function execSQL($query){
-            $ret = $this->exec($query);
+        function execSQL($sql){
+            $ret = $this->query($sql);
             if(!$ret){
-                echo $this->lastErrorMsg();
+                echo lastErrorMsg();
                 return false;
             }else{
                 return $ret;
             }
+        }
+
+        function getDate($year, $month, $day){
+            $sql1 = "SELECT id FROM dates WHERE year = " . $year . " AND month = " . $month . " AND day = " . $day . ";";
+            $sql2 = "SELECT COUNT(*) AS xyz FROM dates WHERE year = " . $year . " AND month = " . $month . " AND day = " . $day . ";";
+            
+            $ret1 = $this->execSQL($sql1);
+            $ret2 = $this->querySingle($sql2);
+
+            if($ret2 == 0){
+                $sql = "INSERT INTO dates (year, month, day) VALUES (" . $year . ", " . $month . ", " . $day . ");";
+                $this->execSQL($sql);
+                return getDate($year, $month, $day);
+            }else{
+                $row = $ret1->fetchArray(SQLITE3_ASSOC);
+                return $row['id'];
+            }
+            
         }
 
         function addFeedback($email, $feedback){
@@ -31,7 +49,7 @@
                         <th>Email Address</th>
                         <th>Feedback</th>
                     </tr>';
-            while($row = $ret->fetchArray(SQLite3_ASSOC)){
+            while($row = $ret->fetchArray(SQLITE3_ASSOC)){
                 echo "<tr>
                         <td>" . $row['email'] . "</td>
                         <td>" . $row['feedback'] ."</td>
@@ -55,7 +73,7 @@
             if(!$results){
                 return false;
             }else{
-                return $results->fetchArray(SQLite3_ASSOC);
+                return $results->fetchArray(SQLITE3_ASSOC);
             }
         }
 
@@ -66,7 +84,7 @@
             if(!$results){
                 return false;
             }else{
-                return $results->fetchArray(SQLite3_ASSOC);
+                return $results->fetchArray(SQLITE3_ASSOC);
             } 
         }
 
@@ -77,7 +95,7 @@
             if(!$results){
                 return false;
             }else{
-                return $results->fetchArray(SQLite3_ASSOC);
+                return $results->fetchArray(SQLITE3_ASSOC);
             }
         }
 
@@ -88,7 +106,7 @@
             if(!$results){
                 return false;
             }else{
-                $row = $results->fetchArray(SQLite3_ASSOC);
+                $row = $results->fetchArray(SQLITE3_ASSOC);
                 return $row['title'];
             }
         }
@@ -108,10 +126,10 @@
                         <th>Type</th>
                         <th>Link</th>
                     </tr>';
-            while($row = $ret->fetchArray(SQLite3_ASSOC)){
+            while($row = $ret->fetchArray(SQLITE3_ASSOC)){
                 echo '<tr>
                         <td>' . $row['title'] . '</td>
-                        <td>' . dateToString($row['date']) . '</td>
+                        <td>' . $row['date'] . '</td>
                         <td>' . getEventTitle($row['event']) . '</td>
                         <td>' . $row['type'] . '</td>
                         <td><a href="event_display.php?id=' . $row['id'] . '">Click Here</a></td> 
@@ -128,18 +146,18 @@
             if(!$ret){
                 return false;
             }else{
-                $row = $ret.fetchArray(SQLite3_ASSOC);
-                $type = $row['type'];
-                switch($type){
-                    case "audio":
-                        echo '<audio controls>
-                            <source src"' . $row['link'] . '" type="audio.mpeg">
-                            </audio>';
-                        break;
+                $row = $ret->fetchArray(SQLITE3_ASSOC);
+                    switch($row['type']){
+                        case "audio":
+                            echo '<audio controls>
+                                <source src"' . $row['link'] . '" type="audio.mpeg">
+                                </audio>';
+                            break;
 
-                    case "video":
-                        echo '<iframe width="420" height="315" src="' . $row['link'] . '"></iframe>';
-                        break;
+                        case "video":
+                            echo '<iframe width="420" height="315" src="' . $row['link'] . '"></iframe>';
+                            break;
+                    }
                 }
             }
         }
@@ -151,111 +169,9 @@
             if(!$ret){
                 return false;
             }else{
-                $row = $ret.fetchArray(SQLite3_ASSOC);
+                $row = $ret.fetchArray(SQLITE3_ASSOC);
                 return $row['id'];
             }
-        }
-
-        function printReceipt($attendee_id){
-            $sql = "SELECT * FROM attendees WHERE id = " . $attendee_id . ";";
-            $ret = execSQL($sql);
-
-            if(!$ret){
-                return false;
-            }else{
-                $row = $ret.fetchArray(SQLite3_ASSOC);
-                echo '<p>Your ID Number is: ' . $row['id'] . '.</p>';
-                echo '<p>Thank You ' . $row['first_name'] . ' ' . $row['last_name'] . ' for registering for the ' . getEventTitle($row['event_id']) . '.</p>';
-                echo '<p>Your event ID number is displayed above. Please use this number and email as proof of registration.</p>';
-                echo '<p>See you at ' . getEventTitle($row['event_id']) . '.</p>';
-                echo '<p><a href="tbd">What\'s the best way of getting there?</a></p>';
-                echo '<p><a href="tbd">Where can I stay?</a></p>';
-                
-            }
-        }
-
-        function searchEvents($title){
-            $sql = "SELECT title, start_date, end_date, id FROM events WHERE title LIKE '%" . $title . "%';";
-            $ret = execSQL($sql);
-            if(!$ret){
-                return false;
-            }else{
-                return $ret;
-            }
-        }
-
-        function searchEvents($start_year, $start_month, $start_day, $end_year, $end_month, $end_day){
-            $sql = "SELECT title, start_date, end_date, id FROM events WHERE start_date IN (
-                SELECT id FROM dates 
-                WHERE year < " . $start_year . 
-                " AND month < " . $start_month . 
-                " AND day < " . $start_day . ") AND end_date IN ( 
-                SELECT id FROM dates 
-                WHERE year < " . $start_year . 
-                " AND month < " . $start_month . 
-                " AND day < " . $start_day . ");";
-            $ret = execSQL($sql);
-            if(!$ret){
-                return false;
-            }else{
-                return $ret;
-            }
-        }
-
-        function searchEvents($title, $start_year, $start_month, $start_day, $end_year, $end_month, $end_day){
-            $sql = "SELECT title, start_date, end_date, id FROM events WHERE start_date IN (
-                SELECT id FROM dates 
-                WHERE year < " . $start_year . 
-                " AND month < " . $start_month . 
-                " AND day < " . $start_day . ") AND end_date IN ( 
-                SELECT id FROM dates 
-                WHERE year < " . $start_year . 
-                " AND month < " . $start_month . 
-                " AND day < " . $start_day . ") AND tile LIKE '%" . $title "%';";
-            $ret = execSQL($sql);
-            if(!$ret){
-                return false;
-            }else{
-                return $ret;
-            }
-        }
-
-        function getDate($year, $month, $day){
-            $sql = "SELECT id FROM dates WHERE year = " . $year . " AND month = " . $month . " AND day = " . $day . ";";
-            $ret = execSQL($sql);
-
-            if(!$ret){
-                $sql = "INSERT INTO dates (year, month, day) VALUES (" . $year . ", " . $month . ", " . $day . ");";
-                return addDate($year, $month, $day);
-            }else{
-                return $ret['id'];
-            }
-        }
-
-        function displayEventSearchResults($results){
-            echo '<table>
-                <tr>
-                    <th>Title</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Link</th>';
-            while($row = $results->fetchArray(SQLite3_ASSOC)){
-                echo '<tr>
-                        <td>' . $row['title'] . '</td>
-                        <td>' . dateToString($row['start_date']) . '</td>
-                        <td>' . dateToString($row['end_date']) . '</td>
-                        <td><a href="display_event?event_id=' . $row['id'] .'">Click Here</a></td>
-                    </tr>';
-            }
-            echo '</table>'
-        }
-
-        //Outputs Date in DD/MM/YYYY format
-        function dateToString($date_id){
-            $sql = "SELECT day, month, year FROM dates WHERE id = " . $date_id . ";";
-            $ret = execSQL($sql);
-            $out = $ret['day'] . '/' . $ret['month'] . '/' . $ret['year'];
-            return $out;
         }
 
         //Deletes attendee table entry based on ID
@@ -302,6 +218,12 @@
             execSQL($sql);
         }
 
+        //Deletes feedback table entry based on ID
+        function deleteDate($id){
+            $sql = "DELETE FROM dates WHERE id = " . $id . ";";
+            execSQL($sql);
+        }
+
         //Adds new Accomodation Entry
         function addAccomodation($name, $location, $stars, $link, $cost){
             $sql = "INSERT INTO accomodation (name, location, stars, link, cost) VALUES ('" . $name .
@@ -332,10 +254,16 @@
 
         //Adds new Event Entry
         function addEvent($title, $start_date, $end_date, $location, $info_link){
-            $sql = "INSERT INTO events (title, start_date, end_date, location, link) VALUES ('" . $title .
+            $sql = "INSERT INTO events (title, start_date, end_date, location, info_text) VALUES ('" . $title .
                 "', " . $start_date . ", " . $end_date . ", " . $location . ", '" . $info_link . "');";
             execSQL($sql);
         }
-
+    /*
+    $db = new MyDB('2016.db');
+    if(!$db){
+        echo $db -> lastErrorMsg();
+    }else{
+        echo "Opened database succesfully";
     }
-?>
+    */
+?>  
