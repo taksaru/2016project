@@ -16,83 +16,62 @@
                     $sql;
                     switch($action){
                         case "delete_accomodation":
-                            $id = $_POST['id'];
-                            $db->deleteAccomodation($id);
+                            $sql = "DELETE FROM accomodation WHERE id = " . $_POST['id'] . ";";
                             break;
-                        case "new_accomdation":
-                            $name = $_POST['accomodation_name'];
-                            $location = $_POST['accomodation_location'];
-                            $stars = $_POST['accomodation_stars'];
-                            $link = $_POST['accomodation_link'];
-                            $cost = $_POST['accomodation_cost'];
-                            $db->addAccomodation($name, $location, $stars, $link, $cost);
+                        case "new_accomodation":
+                            $sql = "INSERT INTO accomodation (name, location, stars, link, cost) VALUES 
+                            ('" . $_POST['accomodation_name'] . "', '" . $_POST['accomodation_location'] . 
+                            "', " . $_POST['accomodation_stars'] . ", '" . $_POST['accomodation_link'] . 
+                            "', " . $_POST['accomodation_cost'] . ");";
                             break;
                         case "delete_attendee":
-                            $id = $_POST['id'];
-                            $db->deleteAttendee($id);
+                            $sql = "DELETE FROM attendees WHERE id = " . $_POST['id'] . ";";
                             break;
                         case "delete_date":
-                            $id = $_POST['id'];
-                            $db->deleteDate($id);
+                            $sql = "DELETE FROM dates WHERE id = " . $_POST['id'] . ";";
                             break;
                         case "new_date":
-                            $year = $_POST['year'];
-                            $month = $_POST['month'];
-                            $day = $_POST['day'];
-                            $db->getDate($year, $month, $day);
+                            $sql = "INSERT INTO dates (year, month, day) VALUES ('" . $_POST['year'] .
+                            ", " . $_POST['month'] . ", " . $_POST['day'] . ";";
                             break;
                         case "delete_event":
-                            $id = $_POST['id'];
-                            $db->deleteEvent($id);
+                            $sql = "DELETE FROM events WHERE id = " . $_POST['id'] . ";";
                             break;
                         case "new_event":
-                            $title = $_POST['event_title'];
-                            $start_date = $_POST['event_start'];
-                            $end_date = $_POST['event_end'];
-                            $location = $_POST['event_location'];
-                            $info_text = $_POST['event_info_text'];
-                            $db->addEvent($title, $start_date, $end_date, $location, $info_text);
+                            $sql = "INSERT INTO events (title, start_date, end_date, location, info_text) 
+                            VALUES ('" . $_POST['event_title'] . "', " . $_POST['event_start'] . ", " .
+                            $_POST['event_end'] . ", '" . $_POST['info_text'] . ";";
                             break;
                         case "delete_location":
-                            $id = $_POST['id'];
-                            $db->deleteLocation($id);
+                            $sql = "INSERT INTO locations WHERE id = " . $_POST['id'] . ";";
                             break;
                         case "new_location":
-                            $region = $_POST['region'];
-                            $addr_1 = $_POST['addr_1'];
-                            $addr_2 = $_POST['addr_2'];
-                            $town = $_POST['town'];
-                            $county = $_POST['county'];
-                            $db->addLocation($region, $addr_1, $addr_2, $town, $county);
+                            $sql = "INSERT INTO locations (region, addr_1, addr_2, town, county) VALUES ('" .
+                            $_POST['region'] . "', '" . $_POST['addr_1'] . "', '" . $_POST['addr_2'] . "', '" .
+                            $_POST['town']. "', '" . $_POST['county'] . ";";
                             break;
                         case "delete_travel":
-                            $id = $_POST['id'];
-                            $db->deleteTravel($id);
+                            $sql = "DELETE FROM travel WHERE id = " . $_POST['id'] . ";";
+                            break;
                         case "new_travel":
-                            $travel_type = $_POST['travel_type'];
-                            $location = $_POST['travel_location'];
-                            $link = $_POST['travel_link'];
-                            $cost = $_POST['travel_cost'];
-                            $contact = $_POST['travel_contact'];
-                            $db->addTravel($travel_type, $location, $link, $cost, $contact);
+                            $sql = "INSERT INTO travel (travel_type, location, link, cost, contact) VALUES ('" .
+                            $_POST['travel_type'] . "', " . $_POST['travel_location'] . ", '" .
+                            $_POST['travel_cost'] . "', " . $_POST['travel_contact'] . ";";
                             break;
                         case "delete_recording":
-                            $id = $_POST['id'];
-                            $db->deleteRecording($id);
+                            $sql = "DELETE FROM recordings WHERE id = " . $_POST['id'] . ";";
                             break;
                         case "new_recording":
-                            $title = $_POST['recording_title'];
-                            $date = $_POST['recording_date'];
-                            $event_id = $_POST['recording_event'];
-                            $type = $_POST['recording_type'];
-                            $link = $_POST['recording_link'];
-                            $db->addRecording($title, $date, $type, $link);
+                            $sql = "INSERT INTO recordings (title, date, event_id, type, link) VALUES ('" .
+                            $_POST['recording_title'] . "', " . $_POST['recording_date'] . ", " .
+                            $_POST['recording_event'] . ", '" . $_POST['recording_type'] . "', '" .
+                            $_POST['recording_link'] . "';";
                             break;
                         case "delete_feedback":
-                            $id = $_POST['id'];
-                            $db->deleteFeedback($id);
+                            $sql = "DELETE FROM feedback WHERE id = " . $_POST['id'] . ";";
                             break;
                     }
+                    $db->execSQL($sql);
                 }
             }
         ?>
@@ -132,12 +111,12 @@
             <tr>
                 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
                     <td><input type="hidden" name="action" value="new_accomodation"></td>
-                    <td><input id="accomodation_name" type="text" placeholder="Name"></td>
-                    <td><input id="accomodation_location" type="number"></td>
-                    <td><input id="accomodation_stars" type="number" min="1" max="5"></td>
+                    <td><input name="accomodation_name" id="accomodation_name" type="text" placeholder="Name"></td>
+                    <td><input name="accomodation_location" id="accomodation_location" type="number"></td>
+                    <td><input name="accomodation_stars" id="accomodation_stars" type="number" min="1" max="5"></td>
                     <!-- Javascript option to pull from clipboard? -->
-                    <td><input id="accomodation_link" type="text"></td>
-                    <td><input id="accomodation_cost" type="number" hint="Average Cost of stay"></td>
+                    <td><input name="accomodation_link" id="accomodation_link" type="text"></td>
+                    <td><input name="accomodation_cost" id="accomodation_cost" type="number" hint="Average Cost of stay"></td>
                     <td><input type="submit" value="Submit"></td>
                 </form>
             </tr>
@@ -251,10 +230,10 @@
             <tr>
                 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
                     <td><input type="hidden" name="action" value="new_event"></td>
-                    <td><input id="event_title" type="text" placeholder="Title"></td>
-                    <td><input id="event_start" type="number"></td>
-                    <td><input id="event_end" type="number"></td>
-                    <td><input id="event_location" type="number"></td>
+                    <td><input name="event_title" id="event_title" type="text" placeholder="Title"></td>
+                    <td><input name="event_start" id="event_start" type="number"></td>
+                    <td><input name="event_end" id="event_end" type="number"></td>
+                    <td><input name="event_location" id="event_location" type="number"></td>
                     <td><input type="submit" value="Submit"></td>
                 </form>
             </tr>
@@ -294,11 +273,11 @@
             <tr>
                 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
                     <td><input type="hidden" name="action" value="new_location"></td>
-                    <td><input id="region" type="text" placeholder="Region"></td>
-                    <td><input id="addr_1" type="text" placeholder="Address Line 1"></td>
-                    <td><input id="addr_2" type="text" placeholder="Address Line 2"></td>
-                    <td><input id="town" type="text" placeholder="Town"></td>
-                    <td><input id="county" type="text" placeholder="County"></td>
+                    <td><input name="region" id="region" type="text" placeholder="Region"></td>
+                    <td><input name="addr_1" id="addr_1" type="text" placeholder="Address Line 1"></td>
+                    <td><input name="addr_2" id="addr_2" type="text" placeholder="Address Line 2"></td>
+                    <td><input name="town" id="town" type="text" placeholder="Town"></td>
+                    <td><input name="county" id="county" type="text" placeholder="County"></td>
                     <td><input type="submit" value="Submit"></td>
                 </form>
             </tr>
@@ -338,11 +317,11 @@
             <tr>
                 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
                     <td><input type="hidden" name="action" value="new_travel"></td>
-                    <td><input id="travel_type" type="text" placeholder="Name"></td>
-                    <td><input id="travel_location" type="number"></td>
-                    <td><input id="travel_link" type="number"></td>
-                    <td><input id="travel_cost" type="number"></td>
-                    <td><input id="travel_contact" type="text" placeholder="Email or Phone Number"></td>
+                    <td><input name="travel_type" id="travel_type" type="text" placeholder="Name"></td>
+                    <td><input name="travel_location" id="travel_location" type="number"></td>
+                    <td><input name="travel_link" id="travel_link" type="number"></td>
+                    <td><input name="travel_cost" id="travel_cost" type="number"></td>
+                    <td><input name="travel_contact" id="travel_contact" type="text" placeholder="Email or Phone Number"></td>
                     <td><input type="submit" value="Submit"></td>
                 </form>
             </tr>
@@ -382,11 +361,11 @@
             <tr>
                 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
                     <td><input type="hidden" name="action" value="new_recording"></td>
-                    <td><input id="recording_title" type="text" placeholder="Title"></td>
-                    <td><input id="recording_date" type="number"></td>
-                    <td><input id="recording_event" type="number"></td>
-                    <td><input id="recording_type" type="text"></td>
-                    <td><input id="recording_link" type="text"></td>
+                    <td><input name="recording_title" id="recording_title" type="text" placeholder="Title"></td>
+                    <td><input name="recording_date" id="recording_date" type="number"></td>
+                    <td><input name="recording_event" id="recording_event" type="number"></td>
+                    <td><input name="recording_type" id="recording_type" type="text"></td>
+                    <td><input name="recording_type" id="recording_link" type="text"></td>
                     <td><input type="submit" value="Submit"></td>
                 </form>
             </tr>
