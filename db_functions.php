@@ -64,6 +64,8 @@
                     VALUES ('" . $first_name . "', '" . $last_name . "', '" . $email . ", " . $phone_number . 
                         "', '" . $language . "', " . $event . ");";
             execSQL($sql);
+            $sql = "UPDATE events SET attendee_count = attendee_count + 1 WHERE id = " . $event . ";";
+            execSQL($sql);
         }
 
         // Returns the first name, last name, spoken language and event_id for the attendee in given order
