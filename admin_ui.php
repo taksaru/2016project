@@ -25,6 +25,8 @@
                             "', " . $_POST['accomodation_cost'] . ");";
                             break;
                         case "delete_attendee":
+                            $sql = "UPDATE events SET attendee_count = attendee_count - 1 WHERE id = " . $event . ";";
+                            $db->execSQL($sql);
                             $sql = "DELETE FROM attendees WHERE id = " . $_POST['id'] . ";";
                             break;
                         case "delete_date":
@@ -38,7 +40,7 @@
                             $sql = "DELETE FROM events WHERE id = " . $_POST['id'] . ";";
                             break;
                         case "new_event":
-                            $sql = "INSERT INTO events (title, start_date, end_date, location, info_text, attendee_count, event_image) 
+                            $sql = "INSERT INTO events (title, start_date, end_date, location, info_text, attendee_count, image_link) 
                             VALUES ('" . $_POST['event_title'] . "', " . $_POST['event_start'] . ", " .
                             $_POST['event_end'] . ", '" . $_POST['info_text'] . ", 0, '" . $_POST['event_image'] "';";
                             break;

@@ -59,8 +59,8 @@
             }
         }
 
-        function addAttendee($first_name, $last_name, $email, $phone_number, $language, $event){
-            $sql = "INSERT INTO attendees (first_name, last_name, email, phone_number, language, event_id)
+        function addAttendee($id, $first_name, $last_name, $email, $phone_number, $language, $event){
+            $sql = "INSERT INTO attendees (id, first_name, last_name, email, phone_number, language, event_id)
                     VALUES ('" . $first_name . "', '" . $last_name . "', '" . $email . ", " . $phone_number . 
                         "', '" . $language . "', " . $event . ");";
             execSQL($sql);
