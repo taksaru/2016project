@@ -61,7 +61,7 @@
 
         function addAttendee($id, $first_name, $last_name, $email, $phone_number, $language, $event){
             $sql = "INSERT INTO attendees (id, first_name, last_name, email, phone_number, language, event_id)
-                    VALUES ('" . $first_name . "', '" . $last_name . "', '" . $email . ", " . $phone_number . 
+                    VALUES (" . $id . ", '" . $first_name . "', '" . $last_name . "', '" . $email . ", " . $phone_number . 
                         "', '" . $language . "', " . $event . ");";
             execSQL($sql);
             $sql = "UPDATE events SET attendee_count = attendee_count + 1 WHERE id = " . $event . ";";

@@ -40,8 +40,8 @@
                             $sql = "DELETE FROM events WHERE id = " . $_POST['id'] . ";";
                             break;
                         case "new_event":
-                            $sql = "INSERT INTO events (title, start_date, end_date, location, info_text, attendee_count, image_link) 
-                            VALUES ('" . $_POST['event_title'] . "', " . $_POST['event_start'] . ", " .
+                            $sql = "INSERT INTO events (id, title, start_date, end_date, location, info_text, attendee_count, image_link) 
+                            VALUES (" . $_POST['event_id'] . ", '" . $_POST['event_title'] . "', " . $_POST['event_start'] . ", " .
                             $_POST['event_end'] . ", '" . $_POST['info_text'] . ", 0, '" . $_POST['event_image'] "';";
                             break;
                         case "delete_location":
@@ -233,7 +233,8 @@
             ?>
             <tr>
                 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
-                    <td><input type="hidden" name="action" value="new_event"></td>
+                    <td><input type="hidden" name="action" value="new_event">
+                        <input type="number" name="event_id" id="event_id"></td>
                     <td><input name="event_title" id="event_title" type="text" placeholder="Title"></td>
                     <td><input name="event_start" id="event_start" type="number"></td>
                     <td><input name="event_end" id="event_end" type="number"></td>
