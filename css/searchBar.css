@@ -13,19 +13,21 @@ a:hover {
 .header {
   background: #3396FF;
   border-bottom: 1px solid #0ab2d2;
-  height: 140px;
+  height: 98px;
+  margin-bottom: 20px;
 }
 .logo {
   float: left;
-  width:50%;
+  width: auto;
   margin: 1em 0em 0em 0em;
 }
 .head-right {
   float: right;
-  width: 50%;
+  width: auto;
 }
 .top-nav {
   float: left;
+  background: #3396FF;
 }
 .top-nav ul {
 	padding:0px;

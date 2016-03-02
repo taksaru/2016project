@@ -1,0 +1,385 @@
+/*background img
+================================================== */
+
+body 
+ {
+
+}
+
+/*---- ALL PAGES--------------------------------------------------*/
+
+/*spacing
+================================================== */
+
+section
+{
+	position: relative !important;
+	top:4px;
+  width: 620px;
+	margin-left: auto;
+	margin-right: auto;
+	
+
+}
+
+/*search 
+================================================== */
+#searchBox
+{
+  position: relative !important;
+  top: 400px;
+  width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+  
+
+}
+
+
+.input
+{
+	color: black;
+
+}
+
+/*event icon
+================================================== */
+
+.event_container {
+   border: 5px solid #000000;
+   background: #ffffff;
+   background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff));
+   background: -webkit-linear-gradient(top, #ffffff, #ffffff);
+   background: -moz-linear-gradient(top, #ffffff, #ffffff);
+   background: -ms-linear-gradient(top, #ffffff, #ffffff);
+   background: -o-linear-gradient(top, #ffffff, #ffffff);
+   background-image: -ms-linear-gradient(top, #ffffff 0%, #ffffff 100%);
+   -webkit-border-radius: 0px;
+   -moz-border-radius: 0px;
+   border-radius: 0px;
+   -webkit-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+   -moz-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+   box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+   font-family: 'Helvetica Neue',Helvetica,sans-serif;
+   text-decoration: none;
+   vertical-align: middle;
+
+   min-width:300px;
+   padding:20px;
+   width:600px;
+   }
+
+   .event_container 
+   {
+   	 position: absolute;
+   	 margin-left: auto;
+	   margin-right: auto;
+     top:770px;
+      left:340px;
+
+   }
+
+   th, td 
+   {
+    padding: 10px;
+    text-align: left;
+	}
+/*posistion icon
+================================================== */
+
+.search-icon
+{
+  position: absolute;
+  top: -30px;
+    left: -35px;
+    z-index: 99;
+}
+      
+/*---- HOME PAGE --------------------------------------------------*/
+
+textarea 
+{
+    resize: none;
+    background: #FBFBEF;
+}
+
+input
+{
+    width: 10em;  height: 2em;
+}
+
+.infoBox {
+    border: 0px solid #f2e3d2;
+    background: #ffff87;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f9fad5), to(#ffff87));
+    background: -webkit-linear-gradient(top, #f9fad5, #ffff87);
+	background: -moz-linear-gradient(top, #f9fad5, #ffff87);
+    background: -ms-linear-gradient(top, #f9fad5, #ffff87);
+    background: -o-linear-gradient(top, #f9fad5, #ffff87);
+    background-image: -ms-linear-gradient(top, #f9fad5 0%, #ffff87 100%);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+    -moz-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+    box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+    font-family: 'Helvetica Neue',Helvetica,sans-serif;
+    text-decoration: none;
+    vertical-align: middle;
+    min-width:250px;
+    padding:20px;
+    width:250px;
+}
+
+/*callender ad on the home page
+================================================== */
+
+  #calendar {
+    width: 360px;
+    margin: 0 auto;
+    font-size: 10px;
+    font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+
+
+    
+    }
+  #calenderAd
+  {
+    font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+    background: rgb(300, 300, 300);
+    
+    width: 400px;
+    font-size: 100px;
+
+    position: absolute;
+     margin-left: auto;
+   margin-right: auto;
+   top:100px;
+   left:210px;
+   padding: 10px;
+
+
+  }
+
+  /* slide show on the home page
+================================================== */
+
+  #comslider_in_point_911021
+{
+  position: absolute;
+  top: 130px;
+  left: 610px;
+}
+
+
+
+/* posistioning 
+================================================== */
+
+.form{
+  float: left;
+}
+    
+.infoBox{
+  float: right;
+}
+    
+.commentBox
+        {
+}
+
+.emailBox
+ {
+  float: left;
+}
+
+.prompt
+{
+    font-weight: bold;
+}
+
+.submitBtn
+{
+}
+
+.content{
+  width: 55%;
+  margin-left: auto;
+  margin-right: auto;
+}
+    
+
+/*TRAVEL 
+================================================== */
+#map{
+  height: 600px;
+}
+
+#floating-panel {
+  position: relative;
+  top: 100px;
+  left: 50px;
+  width: 350px;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+.mapcontent{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.findevent{
+  width: 80%;
+  margin-left:auto;
+  margin-right: auto;
+}
+
+.findevent form{
+  
+}
+
+.findevent legend{
+  background: white;
+  margin: 0;
+}
+
+.findevent #search_results{
+  background-color: white;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  display: none;
+}
+
+.inputevents{
+  background-color: #3396FF;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+#displaymapping{
+  width: 80%;
+  margin-left: auto;
+  margin-right:auto;
+}
+
+#displaymapping form{
+  background-color: #3396FF;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+fieldset{
+  border: none;
+}
+
+.inputevents label{
+  color: white;
+}
+
+body{
+  min-width: 1080px;
+  margin: 0;
+}
+fieldset{
+  padding: 0;
+}
+
+.events input[type="radio"] {
+    display:none;
+}
+
+.events label {
+    display:inline-block;
+    background-color:white;
+  width: 100%;
+  border: 1px solid grey;
+  border-top: 0;
+  padding: 5px;
+}
+
+.events input[type="radio"]:checked + label {
+    background-color:#bbb;
+}
+
+#map {
+        height: 700px;
+      }
+#floating-panel {
+  position: absolute;
+  top: 10px;
+  left: 25%;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+#right-panel {
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+  background-color: #FFF9F2;
+}
+
+#right-panel select, #right-panel input {
+  font-size: 15px;
+}
+
+#right-panel select {
+  width: 100%;
+}
+
+#right-panel i {
+  font-size: 12px;
+}
+
+      #right-panel {
+        height: 700px;
+        float: right;
+        width: 390px;
+        overflow: auto;
+      }
+
+      #map {
+        margin-right: 400px;
+      }
+
+@media print{
+    #map {
+        height: 500px;
+        margin: 0;
+  }
+
+    #right-panel {
+        float: none;
+        width: auto;
+       }
+  }
+
+#displaymapping select{
+  width: 500px;
+  height: 18px;
+}
+
+#displaymapping option{
+  padding: 0;
+  width: 25%;
+  float: left;
+}
+
+  
