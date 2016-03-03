@@ -46,6 +46,8 @@ GLIDERS HOME PAGE
 
 <link href="css/styles.css" rel="stylesheet" type="text/css" media="all"/>
 
+
+
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -59,6 +61,15 @@ GLIDERS HOME PAGE
 <script type='text/javascript' src='fullcalendar/jquery-ui-1.8.11.custom.min.js'></script>
 <script type='text/javascript' src='fullcalendar/fullcalendar.min.js'></script>
 <script type='text/javascript' src='js/CallenderAd.js'></script>
+
+<!-- SOCIAL MEDIA ICONS
+	======================================================-->
+	 <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'>
+<link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css'>
+
+        <link rel="stylesheet" href="css/socialLinks.css">
+
+
 
 
 </head>
@@ -74,6 +85,7 @@ GLIDERS HOME PAGE
 			<div class="head-right">
 			  <div class="top-nav">
 					<span class="menu"> <img src="img/glider.png" alt=""/></span>
+
 				<ul class="res">
 					<?php 
 						include "generatenav.php";
@@ -119,6 +131,7 @@ GLIDERS HOME PAGE
 		
 			<div class="two-third">
 				<div id="searchmodule" class="tabs">
+
 					<img src="img/icons/search.png" style="width:70px;height:70px;" class="search-icon">
 					<ul class="tab-control">
 						<li><a href="#flight-search">National Events</a></li>
@@ -126,19 +139,19 @@ GLIDERS HOME PAGE
 						<li><a href="#travel-search">All Events</a></li>
 					</ul>
 					<div id="flight-search" class="tab-content">
-						<form action="#">
+						<form action="hompage.php" method="post" class="form-container">
 							<div class="field">
 								<label for="flight-from">Search For National Event:</label>
-								<input type="text" id="event-search" class="input-text input" placeholder="Search" autocomplete="off" />
+								<input type="text" name="event-search" class="input-text input" placeholder="Search" autocomplete="off" />
 							</div>
 						
 							<div class="field half">
 								<label for="flight-depart">From:</label>
-								<input type="text" id="nat-frm" class="input-text input-cal input" placeholder="01/01/2016" autocomplete="off" />
+								<input type="text" name="frm" class="input-text input-cal input" placeholder="01/01/2016" autocomplete="off" />
 							</div>
 							<div class="field half even">
 								<label for="flight-return">To:</label>
-								<input type="text" id="nat-to" class="input-text input-cal input" placeholder="12/31/2015" autocomplete="off"/>
+								<input type="text" name="to" class="input-text input-cal input" placeholder="12/31/2015" autocomplete="off"/>
 							</div>
 							<div class="province">
 								 Select Province: 
@@ -158,19 +171,19 @@ GLIDERS HOME PAGE
 					<!--flight search -->
 					
 					<div id="hotel-search" class="tab-content">
-						<form action="#">
+						<form action="hompage.php" method="post" class="form-container">
 						<div class="field">
 								<label for="flight-from">Search For International Event:</label>
-								<input type="text" id="event-search" class="input-text input" placeholder="Search" autocomplete="off" />
+								<input type="text" name="event-search" class="input-text input" placeholder="Search" autocomplete="off" />
 							</div>
 						
 							<div class="field half">
 								<label for="flight-depart">From:</label>
-								<input type="text" id="int-frm" class="input-text input-cal input" placeholder="01/01/2016" autocomplete="off" />
+								<input type="text" name="frm" class="input-text input-cal input" placeholder="01/01/2016" autocomplete="off" />
 							</div>
 							<div class="field half even">
 								<label for="flight-return">To:</label>
-								<input type="text" id="nat-to" class="input-text input-cal input" placeholder="12/31/2015" autocomplete="off" />
+								<input type="text" name="to" class="input-text input-cal input" placeholder="12/31/2015" autocomplete="off" />
 							</div>
 							<div class="province">
 								 Select Province: 
@@ -189,19 +202,19 @@ GLIDERS HOME PAGE
 					<!--hotel search -->
 					
 					<div id="travel-search" class="tab-content">
-						<form action="#">
+						<form action="hompage.php" method="post" class="form-container">
 							<div class="field">
 								<label for="flight-from">Search For Event:</label>
-								<input type="text" id="event-search" class="input-text input" placeholder="Search" autocomplete="off" />
+								<input type="text" name="event-search" class="input-text input" placeholder="Search" autocomplete="off" />
 							</div>
 						
 							<div class="field half">
 								<label for="flight-depart">From:</label>
-								<input type="text" id="all-frm" class="input-text input-cal input" placeholder="01/01/2016" autocomplete="off" />
+								<input type="text" name="frm" class="input-text input-cal input" placeholder="01/01/2016" autocomplete="off" />
 							</div>
 							<div class="field half even">
 								<label for="flight-return">To:</label>
-								<input type="text" id="all-to" class="input-text input-cal input" placeholder="12/31/2015" autocomplete="off" />
+								<input type="text" name="to" class="input-text input-cal input" placeholder="12/31/2015" autocomplete="off" />
 							</div>
 							<div class="province">
 								 Select Province: 
@@ -232,35 +245,115 @@ GLIDERS HOME PAGE
 	</div>
 		<!--end content -->
 
+		<!-- SLIDE SHOW - SHOWS WHAT THE WEBSITE IS ALL ABOUT
+	======================================================-->
+	<div class = "options">
+		<button type="submit">Random Event</button>
+		&nbsp;
+		<a href="deleteReg.php"><button type="submit">Cancel Registeration</button></a>
+	</div>
+
 	<div class="event_container">
 
-		<table style="width:100%">
+		<!--GET DATA OF EVENTS FROM THE DB
+			====================================-->
+
+			<?php
+
+			 class MyDB extends SQLite3
+            {
+                function __construct()
+                {
+                    $this->open('2016.db');
+                }
+            }
+
+
+
+				 if ($_SERVER['REQUEST_METHOD'] == 'POST') 
+			     {
+			     	
+			     	$keyWord = $_POST['event-search'];
+			     	$fromDate = $_POST['frm'];
+			     	$toDate = $_POST['to'];
+
+			     	$db = new MyDB();
+			 
+			     	$ret = $db->query("SELECT * FROM events WHERE title LIKE '%$keyWord%'");
+
+			     	if($ret)
+			     	{
+			     		echo "here";
+			     		while($row = $ret->fetchArray(SQLITE3_ASSOC) )
+			     		{
+					     	echo "event = ". $row['title'] . "\n";
+			     		}
+			     		
+			     	}
+			     	else
+			     	{
+			     		echo "No :-(";
+			     	}
+
+			     	$events_contents = $ret->fetchArray(SQLITE3_ASSOC);
+			     }
+
+			 	else{
+		            $db = new MyDB();
+
+		            if(!$db){
+		            echo $db->lastErrorMsg();
+		            } else {
+		                echo "[[Opened database successfully YAY!!!]]";
+		            }
+
+		            $ret = $db->query("SELECT * FROM events");
+
+		             if(!$ret){
+		            echo $ret->lastErrorMsg();
+		            } else {
+		                echo "[[done!!!]]";
+		            }
+
+		            //STORE DATA VAR
+					//====================================
+
+					$events_contents = $ret->fetchArray(SQLITE3_ASSOC);
+
+			}
+		?>
+
+		<table>
  		<tr>
 
  			<td>
- 				<img src="img/event_Img/cultnight.jpg" alt="" border=3 height=300 width=260>
+ 				<img src="<?php echo $events_contents['image']?>" alt="" border=3 height=300 width=310>
  			</td>
  		<td></td>
  		<td>
- 		<h3> The World Culture Festival 2016</h3>
+ 		<h3> <?php echo $events_contents['title']; ?></h3>
 
 		<p id="description">
+			<?php echo $events_contents['info_text']; ?>
 
-			The World Culture Festival 2016 is a celebration of The Art of Living's 35 years of service, humanity, spirituality and human values. It will take place on March 11-13, 2016 in New Delhi, India. The festival will celebrate the diversity in cultures from across the world while simultaneously highlighting our unity as a human family. </p>
 			<br>
-			<p id="details" style="background:#ECF6CE;"> Where? Cork City, Cork, Munster <br>
-			    When?  14:00  13/2/2016</p>
-			  <br>
-			<button type="submit" style="align=left;">More Info...</button>
+			<p id="details" style="background:#ECF6CE;"> 
+				Where? -  <?php echo $events_contents['location']; ?> <br>
+			    From -   <?php echo $events_contents['start_date']; ?>  <br>
+			    To -   <?php echo $events_contents['end_date']; ?>  <br>
+
+
+			</p>
+			  
 		</td>
 		</tr>
 		<tr>
+			<form method="post" action="reg_form.php">
 			<td>
-				<a href="reg_form.html">
+				<input type="hidden" name="eventID" class = "eventID" id = "eventID" value="<?php echo $events_contents['id']?>"/>	
 				<button type="submit">Register For This Event</button>
-			</a>
-
 			</td>
+			</form>
 
 		</tr>
 
@@ -270,6 +363,7 @@ GLIDERS HOME PAGE
 
 	</div>
 
+	
 	<!-- CALLENDER AD
 		================================================== -->
 
@@ -290,12 +384,27 @@ GLIDERS HOME PAGE
 	oCOMScript911021.type='text/javascript';
 	document.getElementsByTagName("head").item(0).appendChild(oCOMScript911021);
 	</script>
-		
+
+	<!-- IF THE USER PRESSED SEARCH
+	======================================================-->
+
+
 
 	
-	
+
+
+
+
 </div>
-<!--wrapper -->
+
+
+
+
 
 </body>
+
+
+
+
+
 </html>
